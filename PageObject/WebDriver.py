@@ -2,6 +2,17 @@ import time
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
+# --------------------------
+# 1 = Linux  | 2 = Windows
+
+system = 1
+# -------------------------
+
+if system == 1:
+    geckoDriverPath = "/home/krzys/geckodriver"
+else:
+    geckoDriverPath = "E:/geckodriver"
+
 
 options = Options()
 options.add_argument('--disable-gpu')
@@ -19,12 +30,7 @@ oTreXpath = "//div//p"
 # 1 = Linux
 # 2 = Windows
 
-system = 1
 
-if system == 1:
-    geckoDriverPath = "/home/krzys/geckodriver"
-else:
-    geckoDriverPath = "E:/geckodriver"
 
 
 class Driver(object):

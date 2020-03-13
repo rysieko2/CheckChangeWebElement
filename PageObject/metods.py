@@ -1,16 +1,28 @@
+import linecache
 import time
 
-# 1 = Linux
-# 2 = Windows
+# --------------------------
+# 1 = Linux  | 2 = Windows
 
 system = 1
+# -------------------------
 
 if system == 1:
     ramPath = "/proc/meminfo"
-    pathLogFiles = "/home/krzys/tbs-wroclaw/LogsFiles/checkLogs.txt"
+    passwordPath = "/home/krzys/mailAndPass.txt"
 else:
-    ramPath = "C:/Users/Prince/PycharmProjects/tbs-wroclaw/logsFiles/meminfo"
-    pathLogFiles = "C:/Users/Prince/PycharmProjects/tbs-wroclaw/logsFiles/checkLogs.txt"
+    ramPath = "E:/meminfo"
+    passwordPath = "E:/mailAndPass.txt"
+
+
+def password():
+    line = linecache.getline(passwordPath, 2)
+    return line
+
+
+def from_email():
+    line = linecache.getline(passwordPath, 1)
+    return line
 
 
 def actual_time():

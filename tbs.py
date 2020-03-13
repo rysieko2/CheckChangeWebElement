@@ -6,15 +6,23 @@ from PageObject.Gmail import Gmail
 from PageObject.WebDriver import *
 from PageObject.metods import *
 
-# 1 = Linux
-# 2 = Windows
+# --------------------------
+# 1 = Linux  | 2 = Windows
+
 system = 1
+# -------------------------
+
+if system == 1:
+    pathLogFiles = "/home/krzys/CheckChangeWebElement/checkLogs.txt"
+else:
+    pathLogFiles = "C:/Users/Prince/PycharmProjects/CheckChangeWebElement/checkLogs.txt"
+
 
 d = Driver()
 startFirst = d.first()
 startBox = d.box()
 actualBox = startBox
-gm = Gmail('wroclaw.pip@gmail.com', "paleciak")
+gm = Gmail(from_email(), password())
 gm.send_message('kordecki.k@gmail.com', 'VPS-TBS ZOSTAŁ AKTYWOWANY'+str(free_ram()), 'Aktualnie:' + startFirst)
 
 fileLog = File(pathLogFiles)
@@ -30,7 +38,7 @@ while 23 > hour():
     except:
         fileLog.add_string_to_next_line(str(actual_time() + "," + str(free_ram()) + ",Ex: While23 - d.refresh(), C:"+str(counter)))
         gm.quit()
-        gm = Gmail('wroclaw.pip@gmail.com', "paleciak")
+        gm = Gmail(from_email(), password())
         gm.send_mail_attach('kordecki.k@gmail.com', '>>> AWARIA "d.refresh()" <<<', '', pathLogFiles, "logsTbs.txt",
                             "txt")
         counter = 199
@@ -55,7 +63,7 @@ while 23 > hour():
             fileLog.add_string_to_next_line(
                 str(actual_time() + "," + str(free_ram()) + ",Ex: Counter200 - d = Driver()"))
         try:
-            gm = Gmail('wroclaw.pip@gmail.com', "paleciak")
+            gm = Gmail(from_email(), password())
         except:
             fileLog.add_string_to_next_line(
                 str(actual_time() + "," + str(free_ram()) + ",Ex: Counter200 - gm = Gmail"))
@@ -79,7 +87,7 @@ while 23 > hour():
         try:
             gm.send_message('kordecki.k@gmail.com', "NEW:" + actualFirst, d.new_loc_link())
             gm.send_message('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link())
-            fileLog.add_string_to_next_line(str(actual_time()) + "," + str(ram) + "," + str(free_ram()))
+            fileLog.add_string_to_next_line(str(actual_time()) + "," + str(ram) + "," + str(free_ram())+str(actualFirst))
         except:
             fileLog.add_string_to_next_line(
                 str(actual_time() + "," + str(free_ram()) + ",Ex: Box!= -  gm.send_message"))
@@ -89,7 +97,7 @@ while 23 > hour():
 actualFirst = d.first()
 try:
     gm.send_mail_attach('kordecki.k@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst, pathLogFiles,
-                        "logsTbs.txt", "txt")
+                        "logs.txt", "txt")
     # gm.send_message('ania.puszczewicz@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst)
 
 except:
