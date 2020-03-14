@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="52d17e5b-f18a-4c0a-a328-b52e91900ffb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PageObject/ConvertToPdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObject/ConvertToPdf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PageObject/DocxEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObject/DocxEdit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PageObject/WebDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObject/WebDriver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PageObject/metods.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObject/metods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tbs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tbs.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584162458652</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update pdf function">
+      <created>1584203294876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584203294876</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -224,7 +224,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30038023" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -247,7 +246,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add pdf function" />
-    <option name="LAST_COMMIT_MESSAGE" value="add pdf function" />
+    <MESSAGE value="update pdf function" />
+    <option name="LAST_COMMIT_MESSAGE" value="update pdf function" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/checkLogs.txt">
