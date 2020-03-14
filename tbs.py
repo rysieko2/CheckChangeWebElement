@@ -1,6 +1,7 @@
 #!/usr/bin/ python3
 # -*- coding: utf-8 -*-
-
+from PageObject.ConvertToPdf import *
+from PageObject.DocxEdit import changeWordInDocument
 from PageObject.File import File
 from PageObject.Gmail import Gmail
 from PageObject.WebDriver import *
@@ -9,13 +10,15 @@ from PageObject.metods import *
 # --------------------------
 # 1 = Linux  | 2 = Windows
 
-system = 1
+system = 2
 # -------------------------
 
 if system == 1:
     pathLogFiles = "/home/krzys/CheckChangeWebElement/checkLogs.txt"
+    pathFilePdf = "/home/krzys/New-Application.pdf"
 else:
     pathLogFiles = "C:/Users/Prince/PycharmProjects/CheckChangeWebElement/checkLogs.txt"
+    pathFilePdf = "E:/New-Application"
 
 
 d = Driver()
@@ -44,7 +47,7 @@ while 23 > hour():
         counter = 199
     counter += 1
 
-    if counter == 200:
+    if counter == 1:
         ram = free_ram()
         try:
             d.quit()
@@ -76,24 +79,34 @@ while 23 > hour():
                 str(actual_time() + "," + str(free_ram()) + "Ex: Counter200 - gm.send_message"))
         counter = 0
 
-    if startBox != actualBox:
+    if startBox == actualBox:
         ram = free_ram()
         actualFirst = d.first()
         d.first_click()
 
         ad = d.ad_number()
         contents = d.ad_contents()
+
+        changeWordInDocument("DATA", str(actual_date()), "OGŁOSZENIE", ad[14:21], "ULICA", actualFirst[2:])
+
+        if system == 1:
+            libreoffice_exec()
+            convert_to(path, file, timeout=15)
+        else:
+            pathFilePdf = pathFilePdf+str(ad[14:16])+".pdf"
+            convert(path, pathFilePdf)
+
         d.back()
         try:
-            gm.send_message('kordecki.k@gmail.com', "NEW:" + actualFirst, d.new_loc_link())
-            gm.send_message('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link())
+            gm.send_mail_attach('kordecki.k@gmail.com', "NEW:" + actualFirst, d.new_loc_link(), pathFilePdf, "Podanie.pdf", "pdf")
+            # gm.send_message('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link())
             fileLog.add_string_to_next_line(str(actual_time()) + "," + str(ram) + "," + str(free_ram())+str(actualFirst))
         except:
             fileLog.add_string_to_next_line(
                 str(actual_time() + "," + str(free_ram()) + ",Ex: Box!= -  gm.send_message"))
 
         startBox = actualBox
-
+    break
 actualFirst = d.first()
 try:
     gm.send_mail_attach('kordecki.k@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst, pathLogFiles,

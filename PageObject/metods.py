@@ -1,10 +1,10 @@
 import linecache
 import time
-
+from datetime import date
 # --------------------------
 # 1 = Linux  | 2 = Windows
 
-system = 1
+system = 2
 # -------------------------
 
 if system == 1:
@@ -32,6 +32,11 @@ def actual_time():
     return time_string
 
 
+def actual_date():
+    a_date = date.today()
+    return a_date
+
+
 def hour():
     h = time.localtime().tm_hour
     return h
@@ -46,3 +51,5 @@ def free_ram():
                 ret['free'] = int(sline[1])
         ram = str(int(ret['free'] / 1024))
         return ram
+
+
