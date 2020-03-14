@@ -4,7 +4,7 @@ from datetime import date
 # --------------------------
 # 1 = Linux  | 2 = Windows
 
-system = 2
+system = 1
 # -------------------------
 
 if system == 1:

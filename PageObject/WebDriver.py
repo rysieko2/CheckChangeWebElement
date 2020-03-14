@@ -5,7 +5,7 @@ from selenium.webdriver.firefox.options import Options
 # --------------------------
 # 1 = Linux  | 2 = Windows
 
-system = 2
+system = 1
 # -------------------------
 
 if system == 1:

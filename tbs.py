@@ -10,8 +10,9 @@ from PageObject.metods import *
 # --------------------------
 # 1 = Linux  | 2 = Windows
 
-system = 2
+system = 1
 # -------------------------
+
 
 if system == 1:
     pathLogFiles = "/home/krzys/CheckChangeWebElement/checkLogs.txt"
