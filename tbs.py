@@ -7,10 +7,10 @@ from PageObject.Gmail import Gmail
 from PageObject.WebDriver import *
 from PageObject.metods import *
 
-# --------------------------
-# 1 = Linux  | 2 = Windows
 
+# --------------------------
 system = 1
+# 1 = Linux  | 2 = Windows
 # -------------------------
 
 

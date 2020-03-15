@@ -5,9 +5,8 @@ from docx import Document
 # pip install python-docx
 
 # --------------------------
-# 1 = Linux  | 2 = Windows
-
 system = 1
+# 1 = Linux  | 2 = Windows
 # -------------------------
 
 if system == 1:

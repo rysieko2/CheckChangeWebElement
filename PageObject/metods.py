@@ -1,10 +1,10 @@
 import linecache
 import time
 from datetime import date
-# --------------------------
-# 1 = Linux  | 2 = Windows
 
+# --------------------------
 system = 1
+# 1 = Linux  | 2 = Windows
 # -------------------------
 
 if system == 1:

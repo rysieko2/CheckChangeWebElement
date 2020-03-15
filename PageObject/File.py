@@ -3,7 +3,7 @@ class File(object):
         self.path = path
 
     def create_add_string_begin(self, string):
-        file = open(self.path, "w")
+        file = open(self.path, 'w')
         file.write(string+"\n")
         file.close()
 

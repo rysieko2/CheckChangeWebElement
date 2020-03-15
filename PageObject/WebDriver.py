@@ -3,10 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
 # --------------------------
-# 1 = Linux  | 2 = Windows
-
 system = 1
+# 1 = Linux  | 2 = Windows
 # -------------------------
+
 
 if system == 1:
     geckoDriverPath = "/home/krzys/geckodriver"

@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 
 class Gmail(object):
     def __init__(self, email, password):
-        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
         self.email = email
         self.password = password
         server.ehlo()

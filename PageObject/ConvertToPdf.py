@@ -7,9 +7,8 @@ import subprocess
 import re
 
 # --------------------------
-# 1 = Linux  | 2 = Windows
-
 system = 1
+# 1 = Linux  | 2 = Windows
 # -------------------------
 
 
