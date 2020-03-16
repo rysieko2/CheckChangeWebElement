@@ -2,15 +2,13 @@ import linecache
 import time
 from datetime import date
 
-# --------------------------
-system = 1
-# 1 = Linux  | 2 = Windows
-# -------------------------
+ramPath = "/proc/meminfo"
+passwordPath = "/home/krzys/mailAndPass.txt"
 
-if system == 1:
-    ramPath = "/proc/meminfo"
-    passwordPath = "/home/krzys/mailAndPass.txt"
-else:
+
+def set_ram_pass_path():
+    global ramPath
+    global passwordPath
     ramPath = "E:/meminfo"
     passwordPath = "E:/mailAndPass.txt"
 
@@ -51,5 +49,4 @@ def free_ram():
                 ret['free'] = int(sline[1])
         ram = str(int(ret['free'] / 1024))
         return ram
-
 

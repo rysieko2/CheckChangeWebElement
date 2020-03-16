@@ -1,15 +1,16 @@
 #!/usr/bin/ python3
 # -*- coding: utf-8 -*-
+
 from PageObject.ConvertToPdf import *
-from PageObject.DocxEdit import changeWordInDocument
-from PageObject.File import File
-from PageObject.Gmail import Gmail
-from PageObject.WebDriver import *
+from PageObject.DocxEdit import *
+from PageObject.File import *
+from PageObject.Gmail import *
 from PageObject.metods import *
+from PageObject.WebDriver import *
 
 
 # --------------------------
-system = 1
+system = 2
 # 1 = Linux  | 2 = Windows
 # -------------------------
 
@@ -19,7 +20,10 @@ if system == 1:
     pathFilePdf = "/home/krzys/New-Application.pdf"
 else:
     pathLogFiles = "C:/Users/Prince/PycharmProjects/CheckChangeWebElement/checkLogs.txt"
-    pathFilePdf = "E:/New-Application"
+    pathFilePdfW = "C:/Users/Prince/Desktop/New-Application"
+    set_gecko_win()
+    set_ram_pass_path()
+    set_docx_edit_path_win()
 
 
 d = Driver()
@@ -88,14 +92,18 @@ while 23 > hour():
         ad = d.ad_number()
         contents = d.ad_contents()
 
-        changeWordInDocument("DATA", str(actual_date()), "OGŁOSZENIE", ad[14:21], "ULICA", actualFirst[2:])
-
         if system == 1:
             libreoffice_exec()
-            convert_to(path, file, timeout=15)
+            changeWordInDocxLinux("DATA", str(actual_date()))
+            changeWordInDocxLinux("OGŁOSZENIE", ad[14:21])
+            changeWordInDocxLinux("ULICA", actualFirst[2:])
+
+            convert_linux(pathDocxNewFolder, pathDocxNewFile, timeout=15)
+
         else:
-            pathFilePdf = pathFilePdf+str(ad[14:16])+".pdf"
-            convert(path, pathFilePdf)
+            changeWordInDocxWindows("DATA", str(actual_date()), "OGŁOSZENIE", ad[14:21], "ULICA", actualFirst[2:])
+            pathFilePdf = pathFilePdfW+str(ad[14:16])+".pdf"
+            convert_win(pathDocxNewFileWin, pathFilePdf)
 
         d.back()
         try:
@@ -124,4 +132,3 @@ try:
     d.quit()
 except:
     fileLog.add_string_to_next_line(str(actual_time() + "," + str(free_ram()) + ",Ex: Exit -  d.quit()"))
-

@@ -2,15 +2,11 @@ import time
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-# --------------------------
-system = 1
-# 1 = Linux  | 2 = Windows
-# -------------------------
+geckoDriverPath = "/home/krzys/geckodriver"
 
 
-if system == 1:
-    geckoDriverPath = "/home/krzys/geckodriver"
-else:
+def set_gecko_win():
+    global geckoDriverPath
     geckoDriverPath = "E:/geckodriver"
 
 
@@ -27,15 +23,11 @@ boxXpath = '//*[@class="container vspace"]'
 oNomXpath = '//*[@align="center"]'
 oTreXpath = "//div//p"
 
-# 1 = Linux
-# 2 = Windows
-
-
-
 
 class Driver(object):
     def __init__(self):
         driver = webdriver.Firefox(executable_path=geckoDriverPath, options=options)
+        driver.implicitly_wait(10)
         # wait = WebDriverWait(driver, 10)
         driver.get("http://www.tbs-wroclaw.com.pl/mieszkania-na-wynajem/")
         time.sleep(2)

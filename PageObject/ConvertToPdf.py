@@ -2,33 +2,21 @@
 # -*- coding: utf-8 -*-
 
 from docx2pdf import convert
+
 import sys
 import subprocess
 import re
 
-# --------------------------
-system = 1
-# 1 = Linux  | 2 = Windows
-# -------------------------
+pathDocxNewFile = "/home/krzys/New-Application.docx"
+pathDocxNewFolder = "/home/krzys/"
+pathDocxNewFileWin = "F:/New-Application.docx"
 
 
-# Windows install:
-# pip install docx2pdf
-
-# Linux install:
-# apt-get install -y build-essential libssl-dev libffi-dev python-dev
-# apt-get install -y libreoffice
-
-if system == 1:
-    path = "/home/krzys/"
-    file = "/home/krzys/New-Application.docx"
-
-else:
-    path = "E:/New-Application.docx"
-    newName = "E:/New-Application"
+def convert_win(input_path, output_path):
+    convert(input_path, output_path)
 
 
-def convert_to(folder, source, timeout=None):
+def convert_linux(folder, source, timeout=None):
     args = [libreoffice_exec(), '--headless', '--convert-to', 'pdf', '--outdir', folder, source]
 
     process = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout)

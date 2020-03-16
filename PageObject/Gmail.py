@@ -50,3 +50,4 @@ class Gmail(object):
 
     def quit(self):
         self.server.quit()
+
