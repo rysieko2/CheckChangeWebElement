@@ -1,5 +1,0 @@
-.gitignore
-checkLogs.txt
-geckodriver.log
-README.md
-/PageObject/__pycache__/
