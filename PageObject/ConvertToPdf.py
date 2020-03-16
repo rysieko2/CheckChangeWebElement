@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # FOR WINDOWS:
-# from docx2pdf import convert
+from docx2pdf import convert
 
 import sys
 import subprocess

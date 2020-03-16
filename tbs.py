@@ -9,21 +9,19 @@ from PageObject.metods import *
 from PageObject.WebDriver import *
 
 
-# --------------------------
-system = 1 
-# 1 = Linux  | 2 = Windows
-# -------------------------
-
-
-if system == 1:
+try:
+    file = open("/proc/meminfo" 'r')
+    file.close()
     pathLogFiles = "/home/krzys/CheckChangeWebElement/checkLogs.txt"
     pathFilePdf = "/home/krzys/New-Application.pdf"
-else:
+    system = 1
+except:
     pathLogFiles = "C:/Users/Prince/PycharmProjects/CheckChangeWebElement/checkLogs.txt"
     pathFilePdfW = "C:/Users/Prince/Desktop/New-Application"
     set_gecko_win()
     set_ram_pass_path()
     set_docx_edit_path_win()
+    system = 2
 
 
 d = Driver()
@@ -38,7 +36,7 @@ fileLog.create_add_string_begin(str(actual_time() + "," + str(free_ram()) + "," 
 
 counter = 0
 
-while 23 > hour():
+while 0 > hour():
     try:
         print(str(counter) + " " + str(actual_time()))
         d.refresh()
@@ -52,7 +50,7 @@ while 23 > hour():
         counter = 199
     counter += 1
 
-    if counter == 200:
+    if counter == 1:
         ram = free_ram()
         try:
             d.quit()
@@ -84,7 +82,7 @@ while 23 > hour():
                 str(actual_time() + "," + str(free_ram()) + "Ex: Counter200 - gm.send_message"))
         counter = 0
 
-    if startBox != actualBox:
+    if startBox == actualBox:
         ram = free_ram()
         actualFirst = d.first()
         d.first_click()
@@ -105,7 +103,7 @@ while 23 > hour():
         d.back()
         try:
             gm.send_mail_attach('kordecki.k@gmail.com', "NEW:" + actualFirst, d.new_loc_link(), pathFilePdf, "Podanie.pdf", "pdf")
-            gm.send_mail_attach('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link(), pathFilePdf, "Podanie.pdf", "pdf")
+            # gm.send_mail_attach('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link(), pathFilePdf, "Podanie.pdf", "pdf")
 
             fileLog.add_string_to_next_line(str(actual_time()) + "," + str(ram) + "," + str(free_ram())+str(actualFirst))
         except:
@@ -113,7 +111,7 @@ while 23 > hour():
                 str(actual_time() + "," + str(free_ram()) + ",Ex: Box!= -  gm.send_message"))
 
         startBox = actualBox
-    
+    break
 actualFirst = d.first()
 try:
     gm.send_mail_attach('kordecki.k@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst, pathLogFiles, "logs.txt", "txt")

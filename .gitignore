@@ -1,0 +1,14 @@
+README.md
+.gitignore
+checkLogs.txt
+geckodriver.log
+README.md
+/PageObject/__pycache__/
+.idea/workspace.xml.
+.gitignore
+.idea/CheckChangeWebElement.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml

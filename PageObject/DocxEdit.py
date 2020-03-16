@@ -1,4 +1,4 @@
-import time
+# import time
 from docx import Document
 
 pathFolder = "/home/krzys/"
