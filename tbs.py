@@ -8,8 +8,7 @@ from PageObject.Gmail import *
 from PageObject.metods import *
 from PageObject.WebDriver import *
 
-
-# --------------------------
+# -------------------------
 system = 1 
 # 1 = Linux  | 2 = Windows
 # -------------------------
