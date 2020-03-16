@@ -10,7 +10,7 @@ from PageObject.WebDriver import *
 
 
 # --------------------------
-system = 2
+system = 1 
 # 1 = Linux  | 2 = Windows
 # -------------------------
 
@@ -52,7 +52,7 @@ while 23 > hour():
         counter = 199
     counter += 1
 
-    if counter == 1:
+    if counter == 200:
         ram = free_ram()
         try:
             d.quit()
@@ -84,7 +84,7 @@ while 23 > hour():
                 str(actual_time() + "," + str(free_ram()) + "Ex: Counter200 - gm.send_message"))
         counter = 0
 
-    if startBox == actualBox:
+    if startBox != actualBox:
         ram = free_ram()
         actualFirst = d.first()
         d.first_click()
@@ -92,36 +92,31 @@ while 23 > hour():
         ad = d.ad_number()
         contents = d.ad_contents()
 
+        changeWordInDocx("DATA", str(actual_date()), "OGŁOSZENIE", ad[14:21], "ULICA", actualFirst[2:])
+ 
         if system == 1:
             libreoffice_exec()
-            changeWordInDocxLinux("DATA", str(actual_date()))
-            changeWordInDocxLinux("OGŁOSZENIE", ad[14:21])
-            changeWordInDocxLinux("ULICA", actualFirst[2:])
-
             convert_linux(pathDocxNewFolder, pathDocxNewFile, timeout=15)
 
         else:
-            changeWordInDocxWindows("DATA", str(actual_date()), "OGŁOSZENIE", ad[14:21], "ULICA", actualFirst[2:])
             pathFilePdf = pathFilePdfW+str(ad[14:16])+".pdf"
             convert_win(pathDocxNewFileWin, pathFilePdf)
 
         d.back()
         try:
             gm.send_mail_attach('kordecki.k@gmail.com', "NEW:" + actualFirst, d.new_loc_link(), pathFilePdf, "Podanie.pdf", "pdf")
-            # gm.send_message('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link())
+            gm.send_mail_attach('ania.puszczewicz@gmail.com', "NEW:" + actualFirst, d.new_loc_link(), pathFilePdf, "Podanie.pdf", "pdf")
+
             fileLog.add_string_to_next_line(str(actual_time()) + "," + str(ram) + "," + str(free_ram())+str(actualFirst))
         except:
             fileLog.add_string_to_next_line(
                 str(actual_time() + "," + str(free_ram()) + ",Ex: Box!= -  gm.send_message"))
 
         startBox = actualBox
-    break
+    
 actualFirst = d.first()
 try:
-    gm.send_mail_attach('kordecki.k@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst, pathLogFiles,
-                        "logs.txt", "txt")
-    # gm.send_message('ania.puszczewicz@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst)
-
+    gm.send_mail_attach('kordecki.k@gmail.com', 'VPS-TBS ZOSTAŁ WYŁĄCZONY', 'Aktualnie:' + actualFirst, pathLogFiles, "logs.txt", "txt")
 except:
     fileLog.add_string_to_next_line(str(actual_time() + "," + str(free_ram()) + ",Ex: Exit -  gm.send_message"))
 try:
@@ -132,3 +127,4 @@ try:
     d.quit()
 except:
     fileLog.add_string_to_next_line(str(actual_time() + "," + str(free_ram()) + ",Ex: Exit -  d.quit()"))
+

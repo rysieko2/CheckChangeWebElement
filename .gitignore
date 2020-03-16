@@ -1,4 +1,5 @@
+.gitignore
 checkLogs.txt
 geckodriver.log
 README.md
-/PageObject/__pycache__
+/PageObject/__pycache__/

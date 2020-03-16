@@ -1,7 +1,8 @@
 #!/usr/bin/ python3
 # -*- coding: utf-8 -*-
 
-from docx2pdf import convert
+# FOR WINDOWS:
+# from docx2pdf import convert
 
 import sys
 import subprocess

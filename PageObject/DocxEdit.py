@@ -15,7 +15,7 @@ def set_docx_edit_path_win():
     newPathFile = "F:/New-Application.docx"
 
 
-def changeWordInDocxWindows(oldWord1, newWord1, oldWord2, newWord2, oldWord3, newWord3):
+def changeWordInDocx(oldWord1, newWord1, oldWord2, newWord2, oldWord3, newWord3):
     document = Document(pathFile)
     for paragraph in document.paragraphs:
         if oldWord1 in paragraph.text:
