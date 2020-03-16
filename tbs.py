@@ -38,7 +38,7 @@ fileLog.create_add_string_begin(str(actual_time() + "," + str(free_ram()) + "," 
 
 counter = 0
 
-while 23 > hour():
+while 15 > hour():
     try:
         print(str(counter) + " " + str(actual_time()))
         d.refresh()
